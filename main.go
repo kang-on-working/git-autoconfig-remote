@@ -16,6 +16,10 @@ func main() {
 	}
 
 	git, err := pkg.DecryptJsonValue(jsonData, key)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	pkg.ExecCmdlnStr("git config user.email \"", git.Email, "\"")
 	pkg.ExecCmdlnStr("git config user.name \"", git.Username, "\"")
